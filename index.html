@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="top.css">
+    <link rel="stylesheet" href="contents.css">
+    <style>
+        body{
+            font-family: "Outfit", "Noto Sans JP";
+            margin: 0;
+            background-color: rgb(250, 250, 250);
+        }
+        body .contents div{
+            margin: 10px;
+            height: 100vh;
+        }
+        h1{
+            font-weight: 325;
+        }
+        p{
+            font-size: 1.5em;
+        }
+        .canImage, .top .addImage img{
+            position: fixed;
+            top: 10vh;
+            left: 10vw;
+            height: 80vh;
+            width: 80vw;
+            object-fit: contain;
+        }
+        .top .addImage img{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top" id="topContent">
+        <h1 class="topText1">スチール缶が</h1>
+        <h1 class="topText2">潰れる仕組み</h1>
+        <p>小暮千秋</p>
+        <img class="canImage" id="canImage" src="medias/Can.svg">
+        <span class="addImage"></span>
+    </div>
+    <span class="contents" id="contents">
+        <div class="content1" id="content1">
+            <span></span>
+            <p>10月に､ 少量の水を入れたスチール缶を熱して､フタを閉めて冷水に入れるとスチール缶が潰れる､という実験を行いました｡</p>
+        </div>
+        <div id="content2">
+            <p>その授業の中では､｢温度が上昇する事で水が水蒸気になり､粒の動きが激しくなった状態で冷却するとスチール缶内部の空気の体積が減り､</p>
+        </div>
+        <div id="content3">
+            <p>外気に耐えられなくなった｣という説明がされました｡</p>
+        </div>
+        <div id="content4">
+            <p>この資料では､この缶が潰れるメカニズムについてもう少し詳しく調べました｡</p>
+        </div>
+        <div id="content5">
+            <p>まずスチール缶に少量の水を入れて熱すと､スチール缶内部の水は水蒸気となります｡</p>
+        </div>
+        <div id="content6">
+            <p>水が水蒸気となる際には周りの熱を一緒に奪います｡</p>
+        </div>
+        <div id="content7">
+            <p>暑い日に水をまく｢打ち水｣も暑さを水に奪ってもらうためです｡</p>
+        </div>
+        <div id="content8">
+            <p>缶の熱は水により吸収され水蒸気になり､缶の中の空気が押し出されます｡</p>
+        </div>
+        <div id="content9">
+            <p>水が水蒸気になると体積は約1700倍になり､缶はほぼ水蒸気で満たされます｡</p>
+        </div>
+        <div id="content10">
+            <p>フタがされると､水蒸気が閉じ込められます｡</p>
+        </div>
+    </span>
+    <script>
+        window.onload = () => {
+            window.scrollTo(0,0);
+        }
+    </script>
+    <script src="animetion.js"></script>
+</body>
+</html>
