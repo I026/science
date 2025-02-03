@@ -120,5 +120,5 @@
     }
 }
 .H2O_1Animetion{
-    animation: H2OOpacity 1s ease-in-out forwards,H2O_1Vibration .5s ease-in-out forwards infinite alternate;
+    animation: H2OOpacity 1s ease-in-out forwards,H2O_1Vibration .8s ease-in-out forwards infinite alternate;
 }

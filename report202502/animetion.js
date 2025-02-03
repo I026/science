@@ -46,11 +46,14 @@ function canClashReverseLid(interval) {
     }, interval * 2);
 }
 
+topCanClashPlay = true;
+
 setTimeout(() => {
-    if (window.scrollY <= 100) {
+    if (window.scrollY <= 100 && topCanClashPlay) {
         canClash(ClashInterval);
     }
 }, 1000);
+
 
 function scrollEvent_Top(content, scrollThreshold) {
     let executed = false; // 1回だけ実行するためのフラグ
@@ -62,6 +65,7 @@ function scrollEvent_Top(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true; // 再実行を防ぐ
             canClashReverseLid(ClashInterval);
+            topCanClashPlay = false;
         }
     });
 }
@@ -145,7 +149,7 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
     });
 }
 
-scrollEvent_Top(topContent, 1.1);
+scrollEvent_Top(topContent, 1.);
 scrollEvent_Content1(content1, .8);
 scrollEvent_Content1_2(content1, .9);
 scrollEvent_Content2_1(content2, .5);
