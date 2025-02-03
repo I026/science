@@ -8,6 +8,7 @@
 .topTextsBlock{
     top: 0;
     position: absolute;
+    height: 100vh;
 }
 .top h1, .top p{
     position: absolute;
@@ -73,7 +74,7 @@
     }
 }
 .top p{
-    bottom: clamp(.5vh, 1vh, 3vh);
     animation: topText_TopToBottom 2s ease-in-out forwards;
     animation-delay: 2s;
+    font-size: .75em;
 }
