@@ -16,7 +16,7 @@
     opacity: 0;
     text-align: center;
 }
-.top .topText1{
+.topText1{
     top: clamp(3vh, 20vh, 18vh);
     transform: translateY(0);
     animation: topText_TopToBottom 2s ease-in-out forwards;
@@ -37,24 +37,39 @@
         z-index: 100;
     }   
 }
-.top .topText2{
+.topText2{
     bottom: clamp(3vh, 20vh, 18vh);
     transform: translateY(0);
     animation: topText_BottomToTop 2s ease-in-out forwards;
     animation-delay: 1s;
 }
-@media (min-width: 800px){
-    .top .topText1{
-        top: calc(50vh - 1.5em);
-        right: 65vw;
-        text-align: right;
+.topText2 p{
+    font-size: .8em;
+    text-align: center;
+    animation: topText_TopToBottom 2s ease-in-out forwards;
+    animation-delay: 2s;
+    width: 100vw;
+}
+@media (min-width: 750px){
+    .top h1, .top p{
+        width: 30vw;
     }
-    .top .topText2{
+    .topTextsBlock .topText1{
         top: calc(50vh - 1.5em);
-        left: 65vw;
+        left: 0;
+        text-align: right;
+        transform-origin: right;
+    }
+    .topTextsBlock .topText2{
+        top: calc(50vh - 1.5em);
+        right: -100vw;
         text-align: left;
+        transform-origin: left;
         animation: topText_TopToBottom 2s ease-in-out forwards;
         animation-delay: 1s;
+    }
+    .topText2 p{
+        text-align: left;
     }
 }
 @keyframes topText_BottomToTop {
@@ -73,8 +88,9 @@
         z-index: 100;
     }
 }
-.top p{
+/* .topTextsBlock h1 p{
     animation: topText_TopToBottom 2s ease-in-out forwards;
     animation-delay: 2s;
     font-size: .75em;
-}
+    text-align: left;
+} */
