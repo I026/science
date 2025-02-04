@@ -34,8 +34,8 @@ function canClashReverseLid(interval) {
         canImage.src = "medias/Can_Clash1.svg"
     }, interval * 1);
     setTimeout(() => {
+        addImage.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
         canImage.src = "medias/Can_Open.svg"
-        addImage.innerHTML += "<img class='lid' style='opacity: 1;' src='medias/Can_Lid.svg'>";
         addImage.innerHTML += "<img class='water' src='medias/Water.svg'>";
         addImage.innerHTML += "<img class='hotwater' src='medias/HotWater.svg'>";
         addImage.innerHTML += "<img class='h2o' src='medias/H2O.svg'>";
@@ -54,6 +54,15 @@ setTimeout(() => {
     }
 }, 1000);
 
+function opacityAnimetion(object,opacity) {
+    if (opacity == 1) {
+        object.classList.remove("opacityMinAnimetion");
+        object.classList.add("opacityMaxAnimetion");
+    } else if (opacity == 0) {
+        object.classList.remove("opacityMaxAnimetion");
+        object.classList.add("opacityMinAnimetion");
+    }
+}
 
 function scrollEvent_Top(content, scrollThreshold) {
     let executed = false; // 1回だけ実行するためのフラグ
@@ -70,13 +79,13 @@ function scrollEvent_Top(content, scrollThreshold) {
     });
 }
 
-function scrollEvent_Content1(content, scrollThreshold) {
+function scrollEvent_Content1_1(content, scrollThreshold) {
     let executed = false; 
     window.addEventListener("scroll", () => {
         let contentScroll = -content.getBoundingClientRect().top;
         let contentScrollRatio = contentScroll / window.innerHeight + 1;
 
-        console.log(contentScrollRatio);
+        // console.log(contentScrollRatio);
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true; 
             setTimeout(() => {
@@ -95,7 +104,7 @@ function scrollEvent_Content1_2(content, scrollThreshold) {
         let contentScroll = -content.getBoundingClientRect().top;
         let contentScrollRatio = contentScroll / window.innerHeight + 1;
 
-        console.log(contentScrollRatio);
+        // console.log(contentScrollRatio);
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true; 
             setTimeout(() => {
@@ -126,6 +135,7 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
+            canImage.classList.remove("canVibration");
         }
     });
 }
@@ -149,8 +159,62 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
     });
 }
 
+function scrollEvent_Content3_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
+                addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
+            addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+
+        }
+    });
+}
+
+function scrollEvent_Content3_2(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                addImage.querySelector(".lid").classList.add("opacityMin");
+                addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
+                opacityAnimetion(addImage.querySelector(".hotwater"),0);
+                setTimeout(() => {
+                    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+                    addImage.querySelector(".h2o").classList.remove("H2OAnimetions", "H2O_1Animetion");
+                    canClash(ClashInterval);
+                }, 400);
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            addImage.querySelector(".lid").classList.remove("opacityMin");
+            addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
+            addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
+            addImage.querySelector(".h2o").classList.add("H2OAnimetions", "H2O_1Animetion");
+            canClashReverse(ClashInterval);
+        }
+    });
+}
+
 scrollEvent_Top(topContent, 1.);
-scrollEvent_Content1(content1, .8);
+scrollEvent_Content1_1(content1, .8);
 scrollEvent_Content1_2(content1, .9);
 scrollEvent_Content2_1(content2, .5);
 scrollEvent_Content2_2(content2, 1);
+scrollEvent_Content3_1(content3, .1);
+scrollEvent_Content3_2(content3, .7);

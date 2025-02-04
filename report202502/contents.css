@@ -20,6 +20,26 @@
 .opacityHalfAnimetion{
     animation: OpacityHalf .5s ease-in-out forwards;
 }
+@keyframes OpacityMax {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.opacityMaxAnimetion{
+    animation: OpacityMax 1s ease-in-out forwards;
+}
+.opacityMinAnimetion{
+    animation: OpacityMax 1s ease-in-out forwards reverse;
+}
+.opacityMax{
+    opacity: 1;
+}
+.opacityMin{
+    opacity: 0;
+}
 @keyframes lidOpen {
     0%{
         opacity: 1;
@@ -31,6 +51,18 @@
 }
 .lidOpenAnimetion{
     animation: lidOpen 1s ease-in-out forwards;
+}
+@keyframes lidClose {
+    0%{
+        transform: translateY(-50vh);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.lidCloseAnimetion{
+    animation: lidClose 1s ease-in-out forwards;
 }
 @keyframes WaterAdd {
     0%{
@@ -85,14 +117,6 @@
     animation: canXVibration 1s ease-in-out forwards;
     opacity: .5;
 }
-@keyframes H2OOpacity {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
 .H2O{
     animation-delay: 0s,.1s;
     opacity: 0;
@@ -101,24 +125,24 @@
 @keyframes H2O_1Vibration {
     0%{
         rotate: 0;
-        transform: translate(5vw,9vh);
+        transform: translate(5vw,9vw);
     }
     20%{
-        transform: translate(-5vw,6vh);
+        transform: translate(-5vw,6vw);
     }
     40%{
-        transform: translate(5vw,3vh);
+        transform: translate(5vw,3vw);
     }
     60%{
-        transform: translate(-5vw,-3vh);
+        transform: translate(-5vw,-3vw);
     }
     80%{
-        transform: translate(5vw,-6vh);
+        transform: translate(5vw,-6vw);
     }
     100%{
-        transform: translate(-5vw,-9vh);
+        transform: translate(-5vw,-9vw);
     }
 }
 .H2O_1Animetion{
-    animation: H2OOpacity 1s ease-in-out forwards,H2O_1Vibration .8s ease-in-out forwards infinite alternate;
+    animation: OpacityMax 1s ease-in-out forwards,H2O_1Vibration .8s ease-in-out forwards infinite alternate;
 }
