@@ -31,8 +31,14 @@
 .opacityMaxAnimetion{
     animation: OpacityMax 1s ease-in-out forwards;
 }
+.opacityMax200msAnimetion{
+    animation: OpacityMax .2s ease-in-out forwards;
+}
 .opacityMinAnimetion{
     animation: OpacityMax 1s ease-in-out forwards reverse;
+}
+.opacityMin200msAnimetion{
+    animation: OpacityMax .2s ease-in-out forwards reverse;
 }
 .opacityMax{
     opacity: 1;
@@ -117,14 +123,13 @@
     animation: canXVibration 1s ease-in-out forwards;
     opacity: .5;
 }
-.H2O{
+.Grain{
     animation-delay: 0s,.1s;
     opacity: 0;
     transform: translateX(10vw);
 }
-@keyframes H2O_1Vibration {
+@keyframes Grain_1Vibration {
     0%{
-        rotate: 0;
         transform: translate(5vw,9vw);
     }
     20%{
@@ -143,6 +148,6 @@
         transform: translate(-5vw,-9vw);
     }
 }
-.H2O_1Animetion{
-    animation: OpacityMax 1s ease-in-out forwards,H2O_1Vibration .8s ease-in-out forwards infinite alternate;
+.Grain_1Animetion{
+    animation: OpacityMax 1s ease-in-out forwards,Grain_1Vibration .8s ease-in-out forwards infinite alternate;
 }
