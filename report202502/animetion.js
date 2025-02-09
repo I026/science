@@ -10,6 +10,11 @@ const content10 = document.getElementById("content10");
 const content11 = document.getElementById("content11");
 const content13 = document.getElementById("content13");
 const content15 = document.getElementById("content15");
+const content16 = document.getElementById("content16");
+const content19 = document.getElementById("content19");
+const content21 = document.getElementById("content21");
+const content22 = document.getElementById("content22");
+const content23 = document.getElementById("content23");
 
 const ClashInterval = 50;
 
@@ -48,6 +53,10 @@ function canClashReverseLid(interval) {
         addImage.innerHTML += "<img class='hotair' src='medias/HotAir.svg'>";
         addImage.innerHTML += "<img class='h2o' src='medias/H2O.svg'>";
         addImage.innerHTML += "<img class='h2o2' src='medias/H2O.svg'>";
+        addImage.innerHTML += "<img class='rightarrow' src='medias/Arrow.svg'>";
+        addImage.innerHTML += "<img class='leftarrow' src='medias/Arrow.svg'>";
+        addImage.innerHTML += "<img class='outsideleftarrow' src='medias/Arrow.svg'>";
+        addImage.innerHTML += "<img class='outsiderightarrow' src='medias/Arrow.svg'>";
     }, interval * 2);
 }
 
@@ -113,6 +122,134 @@ function scrollEvent_Top(content, scrollThreshold) {
     });
 }
 
+function lidOpen() {
+    addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
+    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+}
+
+function lidClose() {
+    addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
+    addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
+}
+
+function lidOpacityMin() {
+    addImage.querySelector(".lid").classList.add("opacityMin");
+    addImage.querySelector(".lid").classList.remove("opacityMax");
+    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+}
+
+function lidOpacityMax() {
+    addImage.querySelector(".lid").classList.add("opacityMax");
+    addImage.querySelector(".lid").classList.remove("opacityMin");
+    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+}
+
+function addWater() {
+    addImage.querySelector(".water").classList.add("waterAddAnimetion");
+}
+
+function removeWater() {
+    addImage.querySelector(".water").classList.remove("waterAddAnimetion");
+}
+
+function addHotWater() {
+    addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
+}
+
+function removeHotWater() {
+    addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
+}
+
+function addAir() {
+    addImage.querySelector(".air").classList.add("waterAddAnimetion");
+}
+
+function removeAir() {
+    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+}
+
+function addCompressAir() {
+    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+    addImage.querySelector(".air").classList.add("compressAirAnimetion");
+}
+
+function removeCompressAir() {
+    addImage.querySelector(".air").classList.remove("compressAirAnimetion");
+    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+}
+
+function addHotAir() {
+    addImage.querySelector(".hotair").classList.add("waterAddAnimetion");
+}
+
+function removeHotAir() {
+    addImage.querySelector(".hotair").classList.remove("waterAddAnimetion");
+    // addImage.querySelector(".hotair").classList.add("waterRemoveAnimetion");
+}
+
+function canOpacityHalf() {
+    canImage.classList.add("opacityHalfAnimetion");
+}
+
+function canOpacityDefault() {
+    canImage.classList.remove("opacityHalfAnimetion");
+}
+
+function grain_1AnimetionStart() {
+    addImage.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
+}
+
+function grain_1AnimetionStop() {
+    addImage.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
+}
+
+function h2oAnimetionStart() {
+    addImage.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
+    addImage.querySelector(".h2o").classList.add("GrainAnimetions", "grain_1Animetion");
+}
+
+function h2oSlowAnimetionStart() {
+    addImage.querySelector(".h2o").classList.add("grain_1SlowAnimetion");
+    addImage.querySelector(".h2o").classList.remove("grain_1Animetion");
+}
+
+function h2oAnimetionStop() {
+    addImage.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
+    addImage.querySelector(".h2o").classList.remove("grain_1Animetion");
+}
+
+function canVibrationStart() {
+    canImage.classList.add("canVibration");
+}
+
+function canVibrationStop() {
+    canImage.classList.remove("canVibration");
+}
+
+function arrowCompressStart() {
+    addImage.querySelector(".rightarrow").classList.add("rightArrowCompressAnimetion");
+    addImage.querySelector(".leftarrow").classList.add("leftArrowCompressAnimetion");
+    addImage.querySelector(".outsiderightarrow").classList.add("rightArrowSpreadAnimetion");
+    addImage.querySelector(".outsideleftarrow").classList.add("leftArrowSpreadAnimetion");
+}
+
+function arrowCompressStop() {
+    addImage.querySelector(".rightarrow").classList.remove("rightArrowCompressAnimetion");
+    addImage.querySelector(".leftarrow").classList.remove("leftArrowCompressAnimetion");
+    addImage.querySelector(".outsiderightarrow").classList.remove("rightArrowSpreadAnimetion");
+    addImage.querySelector(".outsideleftarrow").classList.remove("leftArrowSpreadAnimetion");
+}
+
+function arrowSpreadStart() {
+    addImage.querySelector(".outsiderightarrow").style.visibility = "";
+    addImage.querySelector(".outsideleftarrow").style.visibility = "";
+}
+
+function arrowSpreadStop() {
+    addImage.querySelector(".outsiderightarrow").style.visibility = "hidden";
+    addImage.querySelector(".outsideleftarrow").style.visibility = "hidden";
+}
+
 function scrollEvent_Content1_1(content, scrollThreshold) {
     let executed = false; 
     window.addEventListener("scroll", () => {
@@ -121,13 +258,13 @@ function scrollEvent_Content1_1(content, scrollThreshold) {
 
         // console.log(contentScrollRatio);
         if (!executed && contentScrollRatio >= scrollThreshold) {
-            executed = true; 
+            executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
+                lidOpen();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
+            lidClose();
         }
         // 缶を戻す､缶を開ける
     });
@@ -143,13 +280,13 @@ function scrollEvent_Content1_2(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true; 
             setTimeout(() => {
-                addImage.querySelector(".water").classList.add("waterAddAnimetion");
-                canImage.classList.add("opacityHalfAnimetion");
+                addWater();
+                canOpacityHalf();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".water").classList.remove("waterAddAnimetion");
-            canImage.classList.remove("opacityHalfAnimetion");
+            removeWater();
+            canOpacityDefault();
         }
         // 水を追加
     });
@@ -165,13 +302,13 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
-                canImage.classList.add("canVibration");
+                addHotWater();
+                canVibrationStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
-            canImage.classList.remove("canVibration");
+            removeHotWater();
+            canVibrationStop();
         }
         // 水を温める
     });
@@ -187,11 +324,11 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".grain").classList.add("GrainAnimetions", "Grain_1Animetion");
+                grain_1AnimetionStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".grain").classList.remove("GrainAnimetions", "Grain_1Animetion");
+            grain_1AnimetionStop();
         }
         // 粒を揺らす
     });
@@ -207,13 +344,11 @@ function scrollEvent_Content3_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
-                addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
+                lidClose();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-            addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+            lidOpen();
         }
         // フタを閉める
     });
@@ -229,19 +364,17 @@ function scrollEvent_Content3_2(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.add("opacityMin");
-                addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
-                addImage.querySelector(".hotwater").classList.add("opacityMin");
+                lidOpacityMin();
+                removeHotWater();
                 canClash(ClashInterval);
-                addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
-                addImage.querySelector(".grain").classList.remove("GrainAnimetions", "Grain_1Animetion");
+                grain_1AnimetionStop();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.remove("opacityMin");
-            addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
-            addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-            addImage.querySelector(".grain").classList.add("GrainAnimetions", "Grain_1Animetion");
+            lidOpacityMax();
+            addHotWater();
+            lidClose();
+            grain_1AnimetionStart();
             canClashReverse(ClashInterval);
         }
         // 缶を潰す
@@ -259,21 +392,16 @@ function scrollEvent_Content5_1(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 canClashReverse(ClashInterval);
-                addImage.querySelector(".hotair").classList.add("waterAddAnimetion");
-                setTimeout(() => {
-                    // addImage.querySelector(".lid").classList.add("opacityMin");
-                    addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-                }, 100);
-                // addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
-                addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
+                addHotAir();
+                lidOpen();
+                addHotWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             canClash(ClashInterval);
-            addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
-            // addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-            addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
-            addImage.querySelector(".hotair").classList.remove("waterAddAnimetion");
+            lidClose();
+            removeHotWater();
+            removeHotAir();
         }
     });
 }
@@ -292,15 +420,15 @@ function scrollEvent_Content9_1(content, scrollThreshold) {
                 addImage.querySelector(".water").classList.add("opacityMinAnimetion");
                 addImage.querySelector(".lid").classList.remove("opacityMin");
                 setTimeout(() => {
-                    addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
-                    addImage.querySelector(".water").classList.remove("waterAddAnimetion");
+                    removeHotWater();
+                    removeWater();
                 }, 1000);
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
+            addHotWater();
             addImage.querySelector(".hotwater").classList.add("opacityMin");
-            addImage.querySelector(".lid").classList.add("opacityMin");
+            lidOpacityMin();
         }
     });
 }
@@ -315,13 +443,11 @@ function scrollEvent_Content10_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-                addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
+                lidClose();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-            addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+            lidOpen();
         }
     });
 }
@@ -336,17 +462,11 @@ function scrollEvent_Content11_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-                addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
-                addImage.querySelector(".h2o").classList.add("GrainAnimetions", "Grain_1Animetion");
-                addImage.querySelector(".h2o").style.animationDuration = "1.6s";
+                h2oAnimetionStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-            addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
-            addImage.querySelector(".h2o").classList.remove("GrainAnimetions", "Grain_1Animetion");
-            addImage.querySelector(".h2o").style.animationDuration = ".8s";
+            h2oAnimetionStop()
         }
     });
 }
@@ -361,50 +481,102 @@ function scrollEvent_Content13_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-                addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
-                addImage.querySelector(".h2o").style.animationDuration = "1.6s";
-                // let roopInterval = setInterval(() => {
-                //     if (roop <= .8) {
-                //         clearInterval(roopInterval);
-                //         // addImage.querySelector(".h2o").style.animationDuration = ".8s";
-                //     } else {
-                //         // roop = `${roop.replace("s","") - .001}s`;
-                //         roop = Math.floor((roop - .002) * 1000) / 1000;
-                //         addImage.querySelector(".h2o").style.animationDuration = `${roop}s`;
-                //     }
-                //     console.log(roop);
-                // },5)
+                lidClose();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-            addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
-            addImage.querySelector(".h2o").style.animationDuration = ".8s";
+            lidOpen();
+            h2oAnimetionStop();
         }
     });
 }
 
-function scrollEvent_Content15_1(content, scrollThreshold) {
+function scrollEvent_Content16_1(content, scrollThreshold) {
     let executed = false;
     window.addEventListener("scroll", () => {
         let contentScroll = -content.getBoundingClientRect().top;
         let contentScrollRatio = contentScroll / window.innerHeight + 1;
 
         // console.log(contentScrollRatio);
-        let roop;
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".hotair").classList.remove("waterAddAnimetion");
-                addImage.querySelector(".air").classList.add("waterAddAnimetion");
-                addImage.querySelector(".h2o").classList.add("opacityMin200msAnimetion");
-                addImage.querySelector(".h2o").style.animationDuration = ".8s";
+                removeHotAir();
+                addCompressAir();
+                h2oSlowAnimetionStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            addImage.querySelector(".hotair").classList.add("waterAddAnimetion");
-            addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+            addHotAir();
+            removeCompressAir();
+            h2oAnimetionStart();
+        }
+    });
+}
+
+function scrollEvent_Content19_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                removeCompressAir();
+                arrowCompressStart();
+                arrowSpreadStop();
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            arrowCompressStop();
+            addCompressAir();
+        }
+    });
+}
+
+function scrollEvent_Content22_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                arrowSpreadStart();
+            }, 100)
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            arrowSpreadStop();
+        }
+    });
+}
+
+function scrollEvent_Content23_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                canClash(ClashInterval);
+                lidOpacityMin();
+                arrowCompressStop();
+                arrowSpreadStart();
+                h2oAnimetionStop();
+            }, 100)
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            canClashReverse(ClashInterval);
+            lidClose();
+            arrowCompressStart();
+            h2oAnimetionStart();
         }
     });
 }
@@ -421,4 +593,7 @@ scrollEvent_Content9_1(content9, .7);
 scrollEvent_Content10_1(content10, .7);
 scrollEvent_Content11_1(content11, .7);
 scrollEvent_Content13_1(content13, .7);
-scrollEvent_Content15_1(content15, .7);
+scrollEvent_Content16_1(content16, .5);
+scrollEvent_Content19_1(content19, .5);
+scrollEvent_Content22_1(content22, .5);
+scrollEvent_Content23_1(content23, .5);

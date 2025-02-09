@@ -18,7 +18,7 @@
     }
 }
 .opacityHalfAnimetion{
-    animation: OpacityHalf .5s ease-in-out forwards;
+    animation: OpacityHalf .5s ease-in-out both;
 }
 @keyframes OpacityMax {
     0%{
@@ -29,16 +29,10 @@
     }
 }
 .opacityMaxAnimetion{
-    animation: OpacityMax 1s ease-in-out forwards;
-}
-.opacityMax200msAnimetion{
-    animation: OpacityMax .2s ease-in-out forwards;
+    animation: OpacityMax 1s ease-in-out both;
 }
 .opacityMinAnimetion{
-    animation: OpacityMax 1s ease-in-out forwards reverse;
-}
-.opacityMin200msAnimetion{
-    animation: OpacityMax .2s ease-in-out forwards reverse;
+    animation: OpacityMax 1s ease-in-out both reverse;
 }
 .opacityMax{
     opacity: 1;
@@ -56,7 +50,7 @@
     }
 }
 .lidOpenAnimetion{
-    animation: lidOpen 1s ease-in-out forwards;
+    animation: lidOpen 1s ease-in-out both;
 }
 @keyframes lidClose {
     0%{
@@ -68,21 +62,24 @@
     }
 }
 .lidCloseAnimetion{
-    animation: lidClose 1s ease-in-out forwards;
+    animation: lidClose 1s ease-in-out both;
 }
 @keyframes WaterAdd {
     0%{
         opacity: 0;
     }
     50%{
-        transform: translateY(0);
+        /* transform: translateY(0); */
     }
     100%{
         opacity: 1;
     }
 }
 .waterAddAnimetion{
-    animation: WaterAdd 1s ease-in-out forwards;
+    animation: WaterAdd 1s ease-in-out both;
+}
+.waterRemoveAnimetion{
+    animation: WaterAdd 1s ease-in-out both reverse;
 }
 @keyframes canXVibration {
     0%{
@@ -120,10 +117,10 @@
     }
 }
 .canVibration{
-    animation: canXVibration 1s ease-in-out forwards;
+    animation: canXVibration 1s ease-in-out both;
     opacity: .5;
 }
-.Grain{
+.grain{
     animation-delay: 0s,.1s;
     opacity: 0;
     transform: translateX(10vw);
@@ -148,6 +145,65 @@
         transform: translate(-5vw,-9vw);
     }
 }
-.Grain_1Animetion{
-    animation: OpacityMax 1s ease-in-out forwards,Grain_1Vibration .8s ease-in-out forwards infinite alternate;
+.grain_1Animetion{
+    animation: OpacityMax 1s ease-in-out both,Grain_1Vibration .8s ease-in-out both infinite alternate;
+    /* animation-delay: 0s,.5s; */
+}
+.grain_1SlowAnimetion{
+    animation: OpacityMax 1s ease-in-out both,Grain_1Vibration 1.6s ease-in-out both infinite alternate;
+    /* animation-delay: 0s,.5s; */
+}
+@keyframes addCompressAir {
+    0%{
+        /* opacity: 0; */
+        transform: scale(1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(.5);
+    }
+}
+.compressAirAnimetion{
+    animation: WaterAdd 1s ease-in-out both, addCompressAir 1s ease-in-out both infinite;
+    animation-delay: 0s, .2s;
+}
+@keyframes arrowCompress {
+    0%{
+        opacity: 1;
+        transform: translate(-5vw,0);
+    }
+    100%{
+        scale: .8;
+        opacity: .5;
+        transform: translate(-4vw,0);
+    }
+}
+.rightArrowCompressAnimetion{
+    animation: WaterAdd 1s ease-in-out both, arrowCompress 1s ease-in-out both infinite;
+    animation-delay: 0s, .2s;
+}
+.leftArrowCompressAnimetion{
+    animation: WaterAdd 1s ease-in-out both, arrowCompress 1s ease-in-out both infinite;
+    animation-delay: 0s, .2s;
+    rotate: 180deg;
+}
+@keyframes arrowSpread {
+    0%{
+        opacity: .5;
+        transform: translate(18vw,0);
+    }
+    100%{
+        scale: 1.2;
+        opacity: 1;
+        transform: translate(15vw,0);
+    }
+}
+.rightArrowSpreadAnimetion{
+    animation: WaterAdd 1s ease-in-out both, arrowSpread 1s ease-in-out both infinite;
+    animation-delay: 0s, .2s;
+    rotate: 180deg;
+}
+.leftArrowSpreadAnimetion{
+    animation: WaterAdd 1s ease-in-out both, arrowSpread 1s ease-in-out both infinite;
+    animation-delay: 0s, .2s;
 }
