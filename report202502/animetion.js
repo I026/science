@@ -47,6 +47,7 @@ function canClashReverseLid(interval) {
     setTimeout(() => {
         addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
         addImage1.innerHTML += "<img class='fire' src='medias/Fire.svg'>";
+        addImage1.innerHTML += "<img class='bucketwater' src='medias/BucketWater.svg'>";
         addImage2.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
         canImage.src = "medias/Can_Open.svg"
         addImage2.innerHTML += "<img class='water' src='medias/Water.svg'>";
@@ -148,8 +149,8 @@ function lidOpacityMax() {
 }
 
 function addTripod() {
-    addImage1.querySelector(".tripod").classList.remove("tripodRemoveAnimetion");
     addImage1.querySelector(".tripod").classList.add("tripodAddAnimetion");
+    addImage1.querySelector(".tripod").classList.remove("tripodRemoveAnimetion");
 }
 
 function removeTripod() {
@@ -165,6 +166,16 @@ function addFire() {
 function removeFire() {
     addImage1.querySelector(".fire").classList.remove("fireAddAnimetion");
     addImage1.querySelector(".fire").classList.add("fireRemoveAnimetion");
+}
+
+function addBucketWater() {
+    addImage1.querySelector(".bucketwater").classList.add("bucketWaterAddAnimetion");
+    addImage1.querySelector(".bucketwater").classList.remove("bucketWaterRemoveAnimetion");
+}
+
+function removeBucketWater() {
+    addImage1.querySelector(".bucketwater").classList.add("bucketWaterRemoveAnimetion");
+    addImage1.querySelector(".bucketwater").classList.remove("bucketWaterAddAnimetion");
 }
 
 function addWater() {
@@ -216,11 +227,13 @@ function removeHotAir() {
 }
 
 function canOpacityHalf() {
+    canImage.classList.remove("opacityDefaultAnimetion");
     canImage.classList.add("opacityHalfAnimetion");
 }
 
 function canOpacityDefault() {
     canImage.classList.remove("opacityHalfAnimetion");
+    canImage.classList.add("opacityDefaultAnimetion");
 }
 
 function grain_1AnimetionStart() {
@@ -354,11 +367,15 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
             setTimeout(() => {
                 addHotWater();
                 canVibrationStart();
+                removeTripod();
+                removeFire();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             removeHotWater();
             canVibrationStop();
+            addTripod();
+            addFire();
         }
         // 水を温める
     });
@@ -395,10 +412,13 @@ function scrollEvent_Content3_1(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 lidClose();
+                addBucketWater();
+                removeHotWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             lidOpen();
+            removeBucketWater();
         }
         // フタを閉める
     });
@@ -415,14 +435,12 @@ function scrollEvent_Content3_2(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 lidOpacityMin();
-                removeHotWater();
                 canClash(ClashInterval);
                 grain_1AnimetionStop();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             lidOpacityMax();
-            addHotWater();
             lidClose();
             grain_1AnimetionStart();
             canClashReverse(ClashInterval);
@@ -445,12 +463,18 @@ function scrollEvent_Content5_1(content, scrollThreshold) {
                 addHotAir();
                 lidOpen();
                 addHotWater();
+                removeBucketWater();
+                addTripod();
+                addFire();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             canClash(ClashInterval);
             removeHotWater();
             removeHotAir();
+            addBucketWater();
+            removeTripod();
+            removeFire();
         }
     });
 }

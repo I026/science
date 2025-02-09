@@ -52,6 +52,43 @@
 .fireRemoveAnimetion{
     animation: fireRemove 1s ease-in-out both;
 }
+@keyframes bucketWaterAdd {
+    0%{
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(-1vh);
+    }
+}
+.bucketWaterAddAnimetion{
+    animation: bucketWaterAdd 1s ease-in-out both;
+}
+@keyframes bucketWaterRemove {
+    0%{
+        opacity: 1;
+        transform: translateY(-1vh);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+}
+.bucketWaterRemoveAnimetion{
+    animation: bucketWaterRemove 1s ease-in-out both;
+}
+@keyframes OpacityDefault {
+    0%{
+        
+    }
+    100%{
+        opacity: .5;
+    }
+}
+.opacityDefaultAnimetion{
+    animation: OpacityDefalut .5s ease-in-out both;
+}
 @keyframes OpacityHalf {
     0%{
         
