@@ -59,7 +59,7 @@
     }
     100%{
         opacity: 1;
-        transform: translateY(-1vh);
+        transform: translateY(-2vh);
     }
 }
 .bucketWaterAddAnimetion{
@@ -68,7 +68,7 @@
 @keyframes bucketWaterRemove {
     0%{
         opacity: 1;
-        transform: translateY(-1vh);
+        transform: translateY(-2vh);
     }
     100%{
         opacity: 0;
@@ -77,6 +77,38 @@
 }
 .bucketWaterRemoveAnimetion{
     animation: bucketWaterRemove 1s ease-in-out both;
+}
+@keyframes bucketWater2Add {
+    0%{
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: .5;
+        transform: translateY(-2vh);
+    }
+}
+.bucketWater2AddAnimetion{
+    animation: bucketWater2Add 1s ease-in-out both;
+}
+@keyframes bucketWater2Remove {
+    0%{
+        opacity: .5;
+        transform: translateY(-2vh);
+    }
+    25%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+}
+.bucketWater2RemoveAnimetion{
+    animation: bucketWater2Remove 1s ease-in-out both;
 }
 @keyframes OpacityDefault {
     0%{

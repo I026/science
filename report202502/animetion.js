@@ -48,6 +48,7 @@ function canClashReverseLid(interval) {
         addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
         addImage1.innerHTML += "<img class='fire' src='medias/Fire.svg'>";
         addImage1.innerHTML += "<img class='bucketwater' src='medias/BucketWater.svg'>";
+        addImage2.innerHTML += "<img class='bucketwater2' src='medias/BucketWater2.svg'>";
         addImage2.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
         canImage.src = "medias/Can_Open.svg"
         addImage2.innerHTML += "<img class='water' src='medias/Water.svg'>";
@@ -171,11 +172,15 @@ function removeFire() {
 function addBucketWater() {
     addImage1.querySelector(".bucketwater").classList.add("bucketWaterAddAnimetion");
     addImage1.querySelector(".bucketwater").classList.remove("bucketWaterRemoveAnimetion");
+    addImage2.querySelector(".bucketwater2").classList.add("bucketWater2AddAnimetion");
+    addImage2.querySelector(".bucketwater2").classList.remove("bucketWater2RemoveAnimetion");
 }
 
 function removeBucketWater() {
     addImage1.querySelector(".bucketwater").classList.add("bucketWaterRemoveAnimetion");
     addImage1.querySelector(".bucketwater").classList.remove("bucketWaterAddAnimetion");
+    addImage2.querySelector(".bucketwater2").classList.add("bucketWater2RemoveAnimetion");
+    addImage2.querySelector(".bucketwater2").classList.remove("bucketWater2AddAnimetion");
 }
 
 function addWater() {
@@ -211,7 +216,7 @@ function addCompressAir() {
 }
 
 function removeCompressAir() {
-    addImage2.querySelector(".air").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".air").classList.add("RemoveAnimetion");
     addImage2.querySelector(".air").classList.remove("compressAirAnimetion");
     addImage2.querySelector(".air").classList.remove("waterAddAnimetion");
 }
@@ -346,10 +351,12 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 addFire();
+                addHotWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             removeFire();
+            removeHotWater();
         }
         // 水を温める
     });
@@ -365,14 +372,12 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addHotWater();
                 canVibrationStart();
                 removeTripod();
                 removeFire();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            removeHotWater();
             canVibrationStop();
             addTripod();
             addFire();
@@ -392,10 +397,12 @@ function scrollEvent_Content2_3(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 grain_1AnimetionStart();
+                addBucketWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             grain_1AnimetionStop();
+            removeBucketWater();
         }
         // 粒を揺らす
     });
@@ -412,19 +419,36 @@ function scrollEvent_Content3_1(content, scrollThreshold) {
             executed = true;
             setTimeout(() => {
                 lidClose();
-                addBucketWater();
-                removeHotWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             lidOpen();
-            removeBucketWater();
         }
         // フタを閉める
     });
 }
 
 function scrollEvent_Content3_2(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                removeHotWater();
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            addHotWater();
+        }
+        // 水を冷やす
+    });
+}
+
+function scrollEvent_Content3_3(content, scrollThreshold) {
     let executed = false;
     window.addEventListener("scroll", () => {
         let contentScroll = -content.getBoundingClientRect().top;
@@ -572,15 +596,38 @@ function scrollEvent_Content16_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
+                h2oSlowAnimetionStart();
+                removeTripod();
+                removeFire();
+                addBucketWater();
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            h2oAnimetionStart();
+            addTripod();
+            addFire();
+            removeBucketWater();
+        }
+    });
+}
+
+function scrollEvent_Content16_2(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
                 removeHotAir();
                 addCompressAir();
-                h2oSlowAnimetionStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             addHotAir();
             removeCompressAir();
-            h2oAnimetionStart();
         }
     });
 }
@@ -653,6 +700,25 @@ function scrollEvent_Content23_1(content, scrollThreshold) {
     });
 }
 
+function scrollEvent_Content24_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                removeBucketWater();
+            }, 100)
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            addBucketWater();
+        }
+    });
+}
+
 scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .8);
 scrollEvent_Content1_2(content1, .9);
@@ -660,13 +726,16 @@ scrollEvent_Content2_1(content2, .2);
 scrollEvent_Content2_2(content2, .5);
 scrollEvent_Content2_3(content2, 1);
 scrollEvent_Content3_1(content3, .1);
-scrollEvent_Content3_2(content3, .7);
+scrollEvent_Content3_2(content3, .2);
+scrollEvent_Content3_3(content3, .7);
 scrollEvent_Content5_1(content5, .7);
 scrollEvent_Content9_1(content9, .7);
 scrollEvent_Content10_1(content10, .7);
 scrollEvent_Content11_1(content11, .7);
 scrollEvent_Content13_1(content13, .7);
-scrollEvent_Content16_1(content16, .5);
+scrollEvent_Content16_1(content16, .2);
+scrollEvent_Content16_2(content16, .5);
 scrollEvent_Content19_1(content19, .5);
 scrollEvent_Content22_1(content22, .5);
 scrollEvent_Content23_1(content23, .5);
+scrollEvent_Content24_1(content24, .5);
