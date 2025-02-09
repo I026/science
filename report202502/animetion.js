@@ -146,14 +146,18 @@ function removeTripod() {
     addImage1.querySelector(".tripod").classList.add("tripodRemoveAnimetion");
 }
 
+let fireIsAdd = false
+
 function addFire() {
     addImage1.querySelector(".fire").classList.remove("fireRemoveAnimetion");
     addImage1.querySelector(".fire").classList.add("fireAddAnimetion");
+    fireIsAdd = true;
 }
 
 function removeFire() {
     addImage1.querySelector(".fire").classList.remove("fireAddAnimetion");
     addImage1.querySelector(".fire").classList.add("fireRemoveAnimetion");
+    fireIsAdd = false;
 }
 
 function addBucketWater() {
@@ -179,13 +183,17 @@ function removeWater() {
     addImage2.querySelector(".water").classList.remove("waterAddAnimetion");
 }
 
+hotWaterIsAdd = false;
+
 function addHotWater() {
     addImage2.querySelector(".hotwater").classList.add("waterAddAnimetion");
+    hotWaterIsAdd = true;
 }
 
 function removeHotWater() {
     addImage2.querySelector(".hotwater").classList.add("opacityMinAnimetion");
     addImage2.querySelector(".hotwater").classList.remove("waterAddAnimetion");
+    hotWaterIsAdd = false;
 }
 
 function addAir() {
@@ -228,12 +236,16 @@ function canOpacityDefault() {
     canImage.classList.add("opacityDefaultAnimetion");
 }
 
+let grain_1IsAnimetion = false;
+
 function grain_1AnimetionStart() {
     addImage2.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
+    grain_1IsAnimetion = true;
 }
 
 function grain_1AnimetionStop() {
     addImage2.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
+    grain_1IsAnimetion = false;
 }
 
 function h2oAnimetionStart() {
@@ -282,6 +294,16 @@ function arrowSpreadStop() {
     addImage2.querySelector(".outsiderightarrow").style.visibility = "hidden";
     addImage2.querySelector(".outsideleftarrow").style.visibility = "hidden";
 }
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY == 0) {
+        if (hotWaterIsAdd && grain_1IsAnimetion && fireIsAdd) {
+            removeHotWater();
+            grain_1AnimetionStop();
+            removeFire();
+        }
+    }
+});
 
 function scrollEvent_Top(content, scrollThreshold) {
     let executed = false; // 1回だけ実行するためのフラグ
@@ -355,11 +377,13 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
             setTimeout(() => {
                 addFire();
                 addHotWater();
+                canVibrationStart();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             removeFire();
             removeHotWater();
+            canVibrationStop();
         }
         // 火を付ける
     });
@@ -375,13 +399,11 @@ function scrollEvent_Content2_2(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                canVibrationStart();
                 removeTripod();
                 removeFire();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            canVibrationStop();
             addTripod();
             addFire();
         }
@@ -745,7 +767,7 @@ myname.addEventListener("click",() =>{
 
 scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .5);
-scrollEvent_Content1_2(content1, .9);
+scrollEvent_Content1_2(content1, .7);
 scrollEvent_Content2_1(content2, .4);
 scrollEvent_Content2_2(content2, .7);
 scrollEvent_Content2_3(content2, 1);
