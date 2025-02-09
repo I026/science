@@ -16,6 +16,9 @@ const content19 = document.getElementById("content19");
 const content21 = document.getElementById("content21");
 const content22 = document.getElementById("content22");
 const content23 = document.getElementById("content23");
+const content24 = document.getElementById("content24");
+const myname = document.getElementById("myname");
+const mymail = document.getElementById("mymail");
 
 const ClashInterval = 50;
 
@@ -110,22 +113,6 @@ function opacityAnimetion(object,opacity) {
 // }
 // GrainVibrationSpeed(1.6,.8,addImage2.querySelector(".h2o"))
 // GrainVibrationSpeed(.8,1.6,addImage2.querySelector(".h2o"))
-
-function scrollEvent_Top(content, scrollThreshold) {
-    let executed = false; // 1回だけ実行するためのフラグ
-    window.addEventListener("scroll", () => {
-        let contentScroll = -content.getBoundingClientRect().top;
-        let contentScrollRatio = contentScroll / window.innerHeight + 1;
-
-        // console.log(contentScrollRatio);
-        if (!executed && contentScrollRatio >= scrollThreshold) {
-            executed = true; // 再実行を防ぐ
-            canClashReverseLid(ClashInterval);
-            topCanClashPlay = false;
-        }
-        // 缶を潰す
-    });
-}
 
 function lidOpen() {
     addImage2.querySelector(".lid").classList.add("lidOpenAnimetion");
@@ -296,6 +283,22 @@ function arrowSpreadStop() {
     addImage2.querySelector(".outsideleftarrow").style.visibility = "hidden";
 }
 
+function scrollEvent_Top(content, scrollThreshold) {
+    let executed = false; // 1回だけ実行するためのフラグ
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true; // 再実行を防ぐ
+            canClashReverseLid(ClashInterval);
+            topCanClashPlay = false;
+        }
+        // 缶を潰す
+    });
+}
+
 function scrollEvent_Content1_1(content, scrollThreshold) {
     let executed = false; 
     window.addEventListener("scroll", () => {
@@ -358,7 +361,7 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
             removeFire();
             removeHotWater();
         }
-        // 水を温める
+        // 火を付ける
     });
 }
 
@@ -719,11 +722,26 @@ function scrollEvent_Content24_1(content, scrollThreshold) {
     });
 }
 
+myname.addEventListener("click",() =>{
+    mymail.classList.add("waterAddAnimetion");
+    let mailIndex = -1
+    let mailInterval = setInterval(() => {
+        mymail.innerHTML = mymail.innerText.slice(0,mailIndex) + `<span style="opacity: .5; color: black;">${mymail.innerText.slice(mailIndex)}</span>`;
+        mailIndex -= 1;
+        // console.log(mailIndex);
+        if (-mymail.innerText.length == mailIndex + 1) {
+            mymail.querySelector("span").style.opacity = 0;
+            clearInterval(mailInterval);
+            mymail.classList.remove("waterAddAnimetion");
+        }
+    }, 1000);
+})
+
 scrollEvent_Top(topContent, 1.2);
-scrollEvent_Content1_1(content1, .8);
+scrollEvent_Content1_1(content1, .5);
 scrollEvent_Content1_2(content1, .9);
-scrollEvent_Content2_1(content2, .2);
-scrollEvent_Content2_2(content2, .5);
+scrollEvent_Content2_1(content2, .4);
+scrollEvent_Content2_2(content2, .7);
 scrollEvent_Content2_3(content2, 1);
 scrollEvent_Content3_1(content3, .1);
 scrollEvent_Content3_2(content3, .2);
