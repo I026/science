@@ -527,10 +527,12 @@ function scrollEvent_Content19_1(content, scrollThreshold) {
                 removeCompressAir();
                 arrowCompressStart();
                 arrowSpreadStop();
+                h2oAnimetionStop();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             arrowCompressStop();
+            h2oSlowAnimetionStart();
             addCompressAir();
         }
     });
