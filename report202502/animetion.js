@@ -693,12 +693,14 @@ function scrollEvent_Content23_1(content, scrollThreshold) {
                 arrowCompressStop();
                 arrowSpreadStart();
                 h2oAnimetionStop();
+                canOpacityDefault();
             }, 100)
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             canClashReverse(ClashInterval);
             lidClose();
             arrowCompressStart();
+            canOpacityHalf();
         }
     });
 }
@@ -724,17 +726,21 @@ function scrollEvent_Content24_1(content, scrollThreshold) {
 
 myname.addEventListener("click",() =>{
     mymail.classList.add("waterAddAnimetion");
-    let mailIndex = -1
-    let mailInterval = setInterval(() => {
-        mymail.innerHTML = mymail.innerText.slice(0,mailIndex) + `<span style="opacity: .5; color: black;">${mymail.innerText.slice(mailIndex)}</span>`;
-        mailIndex -= 1;
-        // console.log(mailIndex);
-        if (-mymail.innerText.length == mailIndex + 1) {
-            mymail.querySelector("span").style.opacity = 0;
-            clearInterval(mailInterval);
-            mymail.classList.remove("waterAddAnimetion");
-        }
-    }, 1000);
+    setTimeout(() => {
+        mymail.classList.remove("waterAddAnimetion");
+    }, 10000);
+    // mymail.classList.add("waterAddAnimetion");
+    // let mailIndex = -1
+    // let mailInterval = setInterval(() => {
+    //     mymail.innerHTML = mymail.innerText.slice(0,mailIndex) + `<span style="opacity: .5; color: black;">${mymail.innerText.slice(mailIndex)}</span>`;
+    //     mailIndex -= 1;
+    //     // console.log(mailIndex);
+    //     if (-mymail.innerText.length == mailIndex + 1) {
+    //         mymail.querySelector("span").style.opacity = 0;
+    //         clearInterval(mailInterval);
+    //         mymail.classList.remove("waterAddAnimetion");
+    //     }
+    // }, 1000);
 })
 
 scrollEvent_Top(topContent, 1.2);
@@ -752,7 +758,7 @@ scrollEvent_Content10_1(content10, .7);
 scrollEvent_Content11_1(content11, .7);
 scrollEvent_Content13_1(content13, .7);
 scrollEvent_Content16_1(content16, .2);
-scrollEvent_Content16_2(content16, .5);
+scrollEvent_Content16_2(content16, .3);
 scrollEvent_Content19_1(content19, .5);
 scrollEvent_Content22_1(content22, .5);
 scrollEvent_Content23_1(content23, .5);
