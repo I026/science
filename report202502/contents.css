@@ -166,11 +166,11 @@
 }
 @keyframes arrowCompress {
     0%{
-        opacity: 1;
+        opacity: 0;
     }
     100%{
         scale: .8;
-        opacity: .5;
+        opacity: 1;
     }
 }
 .rightArrowCompressAnimetion{
@@ -186,7 +186,7 @@
 }
 @keyframes arrowSpread {
     0%{
-        opacity: .5;
+        opacity: 0;
         transform: translate(20vw,0);
     }
     100%{

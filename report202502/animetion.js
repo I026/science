@@ -157,6 +157,7 @@ function addHotWater() {
 }
 
 function removeHotWater() {
+    addImage.querySelector(".hotwater").classList.add("opacityMinAnimetion");
     addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
 }
 
@@ -183,6 +184,7 @@ function addHotAir() {
 }
 
 function removeHotAir() {
+    addImage.querySelector(".hotair").classList.add("opacityMinAnimetion");
     addImage.querySelector(".hotair").classList.remove("waterAddAnimetion");
     // addImage.querySelector(".hotair").classList.add("waterRemoveAnimetion");
 }
@@ -415,13 +417,11 @@ function scrollEvent_Content9_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                addImage.querySelector(".hotwater").classList.add("opacityMinAnimetion");
-                addImage.querySelector(".water").classList.add("opacityMinAnimetion");
-                addImage.querySelector(".lid").classList.remove("opacityMin");
-                setTimeout(() => {
-                    removeHotWater();
-                    removeWater();
-                }, 1000);
+                // addImage.querySelector(".hotwater").classList.add("opacityMinAnimetion");
+                // addImage.querySelector(".water").classList.add("opacityMinAnimetion");
+                // addImage.querySelector(".lid").classList.remove("opacityMin");
+                removeHotWater();
+                removeWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
@@ -577,12 +577,11 @@ function scrollEvent_Content23_1(content, scrollThreshold) {
             canClashReverse(ClashInterval);
             lidClose();
             arrowCompressStart();
-            h2oAnimetionStart();
         }
     });
 }
 
-scrollEvent_Top(topContent, 1.);
+scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .8);
 scrollEvent_Content1_2(content1, .9);
 scrollEvent_Content2_1(content2, .5);
