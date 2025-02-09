@@ -6,9 +6,6 @@
     width: 100vw;
     left: 0;
 }
-.content1 span{
-    position: absolute;
-}
 @keyframes OpacityHalf {
     0%{
         

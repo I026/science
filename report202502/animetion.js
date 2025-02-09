@@ -399,7 +399,6 @@ function scrollEvent_Content5_1(content, scrollThreshold) {
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             canClash(ClashInterval);
-            lidClose();
             removeHotWater();
             removeHotAir();
         }
