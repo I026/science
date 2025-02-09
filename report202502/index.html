@@ -31,7 +31,7 @@
             word-wrap: break-word;
             color: black;
         }
-        .canImage, .top .addImage img{
+        .addImage1 img, .canImage, .addImage2 img{
             position: fixed;
             top: 0;
             left: 0;
@@ -39,7 +39,7 @@
             width: 100vw;
             object-fit: contain;
         }
-        .top .addImage img:not(.lid){
+        .addImage1 img, .addImage2 img:not(.lid){
             opacity: 0;
         }
     </style>
@@ -52,8 +52,9 @@
                 潰れる仕組み<br><p>小暮千秋</p>
             </h1>
         </div>
+        <span class="addImage1"></span>
         <img class="canImage" id="canImage" src="medias/Can.svg">
-        <span class="addImage"></span>
+        <span class="addImage2"></span>
     </div>
     <span class="contents" id="contents">
         <div class="content1" id="content1">

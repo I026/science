@@ -1,6 +1,7 @@
 const topContent = document.getElementById("topContent");
+const addImage1 = topContent.querySelector(".addImage1");
 const canImage = document.getElementById("canImage");
-const addImage = topContent.querySelector(".addImage");
+const addImage2 = topContent.querySelector(".addImage2");
 const content1 = document.getElementById("content1");
 const content2 = document.getElementById("content2");
 const content3 = document.getElementById("content3");
@@ -44,19 +45,21 @@ function canClashReverseLid(interval) {
         canImage.src = "medias/Can_Clash1.svg"
     }, interval * 1);
     setTimeout(() => {
-        addImage.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
+        addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
+        addImage1.innerHTML += "<img class='fire' src='medias/Fire.svg'>";
+        addImage2.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
         canImage.src = "medias/Can_Open.svg"
-        addImage.innerHTML += "<img class='water' src='medias/Water.svg'>";
-        addImage.innerHTML += "<img class='hotwater' src='medias/HotWater.svg'>";
-        addImage.innerHTML += "<img class='grain' src='medias/Grain.svg'>";
-        addImage.innerHTML += "<img class='air' src='medias/Air.svg'>";
-        addImage.innerHTML += "<img class='hotair' src='medias/HotAir.svg'>";
-        addImage.innerHTML += "<img class='h2o' src='medias/H2O.svg'>";
-        addImage.innerHTML += "<img class='h2o2' src='medias/H2O.svg'>";
-        addImage.innerHTML += "<img class='rightarrow' src='medias/Arrow.svg'>";
-        addImage.innerHTML += "<img class='leftarrow' src='medias/Arrow.svg'>";
-        addImage.innerHTML += "<img class='outsideleftarrow' src='medias/Arrow.svg'>";
-        addImage.innerHTML += "<img class='outsiderightarrow' src='medias/Arrow.svg'>";
+        addImage2.innerHTML += "<img class='water' src='medias/Water.svg'>";
+        addImage2.innerHTML += "<img class='hotwater' src='medias/HotWater.svg'>";
+        addImage2.innerHTML += "<img class='grain' src='medias/Grain.svg'>";
+        addImage2.innerHTML += "<img class='air' src='medias/Air.svg'>";
+        addImage2.innerHTML += "<img class='hotair' src='medias/HotAir.svg'>";
+        addImage2.innerHTML += "<img class='h2o' src='medias/H2O.svg'>";
+        addImage2.innerHTML += "<img class='h2o2' src='medias/H2O.svg'>";
+        addImage2.innerHTML += "<img class='rightarrow' src='medias/Arrow.svg'>";
+        addImage2.innerHTML += "<img class='leftarrow' src='medias/Arrow.svg'>";
+        addImage2.innerHTML += "<img class='outsideleftarrow' src='medias/Arrow.svg'>";
+        addImage2.innerHTML += "<img class='outsiderightarrow' src='medias/Arrow.svg'>";
     }, interval * 2);
 }
 
@@ -91,7 +94,7 @@ function opacityAnimetion(object,opacity) {
 //     let roopInterval = setInterval(() => {
 //         if (moreThanFrom && roop <= to || !moreThanFrom && roop > to) {
 //             clearInterval(roopInterval);
-//             // addImage.querySelector(".h2o").style.animationDuration = ".8s";
+//             // addImage2.querySelector(".h2o").style.animationDuration = ".8s";
 //         } else {
 //             if (moreThanFrom) {
 //                 roop = Math.floor((roop - .0001) * 1000) / 1000;
@@ -103,8 +106,8 @@ function opacityAnimetion(object,opacity) {
 //         // console.log(roop);
 //     },1)
 // }
-// GrainVibrationSpeed(1.6,.8,addImage.querySelector(".h2o"))
-// GrainVibrationSpeed(.8,1.6,addImage.querySelector(".h2o"))
+// GrainVibrationSpeed(1.6,.8,addImage2.querySelector(".h2o"))
+// GrainVibrationSpeed(.8,1.6,addImage2.querySelector(".h2o"))
 
 function scrollEvent_Top(content, scrollThreshold) {
     let executed = false; // 1回だけ実行するためのフラグ
@@ -123,70 +126,93 @@ function scrollEvent_Top(content, scrollThreshold) {
 }
 
 function lidOpen() {
-    addImage.querySelector(".lid").classList.add("lidOpenAnimetion");
-    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+    addImage2.querySelector(".lid").classList.add("lidOpenAnimetion");
+    addImage2.querySelector(".lid").classList.remove("lidCloseAnimetion");
 }
 
 function lidClose() {
-    addImage.querySelector(".lid").classList.add("lidCloseAnimetion");
-    addImage.querySelector(".lid").classList.remove("lidOpenAnimetion");
+    addImage2.querySelector(".lid").classList.add("lidCloseAnimetion");
+    addImage2.querySelector(".lid").classList.remove("lidOpenAnimetion");
 }
 
 function lidOpacityMin() {
-    addImage.querySelector(".lid").classList.add("opacityMin");
-    addImage.querySelector(".lid").classList.remove("opacityMax");
-    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+    addImage2.querySelector(".lid").classList.add("opacityMin");
+    addImage2.querySelector(".lid").classList.remove("opacityMax");
+    addImage2.querySelector(".lid").classList.remove("lidCloseAnimetion");
 }
 
 function lidOpacityMax() {
-    addImage.querySelector(".lid").classList.add("opacityMax");
-    addImage.querySelector(".lid").classList.remove("opacityMin");
-    addImage.querySelector(".lid").classList.remove("lidCloseAnimetion");
+    addImage2.querySelector(".lid").classList.add("opacityMax");
+    addImage2.querySelector(".lid").classList.remove("opacityMin");
+    addImage2.querySelector(".lid").classList.remove("lidCloseAnimetion");
+}
+
+function addTripod() {
+    addImage1.querySelector(".tripod").classList.remove("tripodRemoveAnimetion");
+    addImage1.querySelector(".tripod").classList.add("tripodAddAnimetion");
+}
+
+function removeTripod() {
+    addImage1.querySelector(".tripod").classList.remove("tripodAddAnimetion");
+    addImage1.querySelector(".tripod").classList.add("tripodRemoveAnimetion");
+}
+
+function addFire() {
+    addImage1.querySelector(".fire").classList.remove("fireRemoveAnimetion");
+    addImage1.querySelector(".fire").classList.add("fireAddAnimetion");
+}
+
+function removeFire() {
+    addImage1.querySelector(".fire").classList.remove("fireAddAnimetion");
+    addImage1.querySelector(".fire").classList.add("fireRemoveAnimetion");
 }
 
 function addWater() {
-    addImage.querySelector(".water").classList.add("waterAddAnimetion");
+    addImage2.querySelector(".water").classList.add("waterAddAnimetion");
 }
 
 function removeWater() {
-    addImage.querySelector(".water").classList.remove("waterAddAnimetion");
+    addImage2.querySelector(".water").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".water").classList.remove("waterAddAnimetion");
 }
 
 function addHotWater() {
-    addImage.querySelector(".hotwater").classList.add("waterAddAnimetion");
+    addImage2.querySelector(".hotwater").classList.add("waterAddAnimetion");
 }
 
 function removeHotWater() {
-    addImage.querySelector(".hotwater").classList.add("opacityMinAnimetion");
-    addImage.querySelector(".hotwater").classList.remove("waterAddAnimetion");
+    addImage2.querySelector(".hotwater").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".hotwater").classList.remove("waterAddAnimetion");
 }
 
 function addAir() {
-    addImage.querySelector(".air").classList.add("waterAddAnimetion");
+    addImage2.querySelector(".air").classList.add("waterAddAnimetion");
 }
 
 function removeAir() {
-    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+    addImage2.querySelector(".air").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".air").classList.remove("waterAddAnimetion");
 }
 
 function addCompressAir() {
-    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
-    addImage.querySelector(".air").classList.add("compressAirAnimetion");
+    addImage2.querySelector(".air").classList.remove("waterAddAnimetion");
+    addImage2.querySelector(".air").classList.add("compressAirAnimetion");
 }
 
 function removeCompressAir() {
-    addImage.querySelector(".air").classList.remove("compressAirAnimetion");
-    addImage.querySelector(".air").classList.remove("waterAddAnimetion");
+    addImage2.querySelector(".air").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".air").classList.remove("compressAirAnimetion");
+    addImage2.querySelector(".air").classList.remove("waterAddAnimetion");
 }
 
 function addHotAir() {
-    addImage.querySelector(".hotair").classList.add("waterAddAnimetion");
+    addImage2.querySelector(".hotair").classList.add("waterAddAnimetion");
 }
 
 function removeHotAir() {
-    addImage.querySelector(".hotair").classList.add("opacityMinAnimetion");
-    addImage.querySelector(".hotair").classList.remove("waterAddAnimetion");
-    // addImage.querySelector(".hotair").classList.add("waterRemoveAnimetion");
+    addImage2.querySelector(".hotair").classList.add("opacityMinAnimetion");
+    addImage2.querySelector(".hotair").classList.remove("waterAddAnimetion");
+    // addImage2.querySelector(".hotair").classList.add("waterRemoveAnimetion");
 }
 
 function canOpacityHalf() {
@@ -198,26 +224,26 @@ function canOpacityDefault() {
 }
 
 function grain_1AnimetionStart() {
-    addImage.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
+    addImage2.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
 }
 
 function grain_1AnimetionStop() {
-    addImage.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
+    addImage2.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
 }
 
 function h2oAnimetionStart() {
-    addImage.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
-    addImage.querySelector(".h2o").classList.add("GrainAnimetions", "grain_1Animetion");
+    addImage2.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
+    addImage2.querySelector(".h2o").classList.add("GrainAnimetions", "grain_1Animetion");
 }
 
 function h2oSlowAnimetionStart() {
-    addImage.querySelector(".h2o").classList.add("grain_1SlowAnimetion");
-    addImage.querySelector(".h2o").classList.remove("grain_1Animetion");
+    addImage2.querySelector(".h2o").classList.add("grain_1SlowAnimetion");
+    addImage2.querySelector(".h2o").classList.remove("grain_1Animetion");
 }
 
 function h2oAnimetionStop() {
-    addImage.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
-    addImage.querySelector(".h2o").classList.remove("grain_1Animetion");
+    addImage2.querySelector(".h2o").classList.remove("grain_1SlowAnimetion");
+    addImage2.querySelector(".h2o").classList.remove("grain_1Animetion");
 }
 
 function canVibrationStart() {
@@ -229,27 +255,27 @@ function canVibrationStop() {
 }
 
 function arrowCompressStart() {
-    addImage.querySelector(".rightarrow").classList.add("rightArrowCompressAnimetion");
-    addImage.querySelector(".leftarrow").classList.add("leftArrowCompressAnimetion");
-    addImage.querySelector(".outsiderightarrow").classList.add("rightArrowSpreadAnimetion");
-    addImage.querySelector(".outsideleftarrow").classList.add("leftArrowSpreadAnimetion");
+    addImage2.querySelector(".rightarrow").classList.add("rightArrowCompressAnimetion");
+    addImage2.querySelector(".leftarrow").classList.add("leftArrowCompressAnimetion");
+    addImage2.querySelector(".outsiderightarrow").classList.add("rightArrowSpreadAnimetion");
+    addImage2.querySelector(".outsideleftarrow").classList.add("leftArrowSpreadAnimetion");
 }
 
 function arrowCompressStop() {
-    addImage.querySelector(".rightarrow").classList.remove("rightArrowCompressAnimetion");
-    addImage.querySelector(".leftarrow").classList.remove("leftArrowCompressAnimetion");
-    addImage.querySelector(".outsiderightarrow").classList.remove("rightArrowSpreadAnimetion");
-    addImage.querySelector(".outsideleftarrow").classList.remove("leftArrowSpreadAnimetion");
+    addImage2.querySelector(".rightarrow").classList.remove("rightArrowCompressAnimetion");
+    addImage2.querySelector(".leftarrow").classList.remove("leftArrowCompressAnimetion");
+    addImage2.querySelector(".outsiderightarrow").classList.remove("rightArrowSpreadAnimetion");
+    addImage2.querySelector(".outsideleftarrow").classList.remove("leftArrowSpreadAnimetion");
 }
 
 function arrowSpreadStart() {
-    addImage.querySelector(".outsiderightarrow").style.visibility = "";
-    addImage.querySelector(".outsideleftarrow").style.visibility = "";
+    addImage2.querySelector(".outsiderightarrow").style.visibility = "";
+    addImage2.querySelector(".outsideleftarrow").style.visibility = "";
 }
 
 function arrowSpreadStop() {
-    addImage.querySelector(".outsiderightarrow").style.visibility = "hidden";
-    addImage.querySelector(".outsideleftarrow").style.visibility = "hidden";
+    addImage2.querySelector(".outsiderightarrow").style.visibility = "hidden";
+    addImage2.querySelector(".outsideleftarrow").style.visibility = "hidden";
 }
 
 function scrollEvent_Content1_1(content, scrollThreshold) {
@@ -284,17 +310,39 @@ function scrollEvent_Content1_2(content, scrollThreshold) {
             setTimeout(() => {
                 addWater();
                 canOpacityHalf();
+                addTripod();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             removeWater();
             canOpacityDefault();
+            removeTripod();
         }
         // 水を追加
     });
 }
 
 function scrollEvent_Content2_1(content, scrollThreshold) {
+    let executed = false;
+    window.addEventListener("scroll", () => {
+        let contentScroll = -content.getBoundingClientRect().top;
+        let contentScrollRatio = contentScroll / window.innerHeight + 1;
+
+        // console.log(contentScrollRatio);
+        if (!executed && contentScrollRatio >= scrollThreshold) {
+            executed = true;
+            setTimeout(() => {
+                addFire();
+            }, 100);
+        } else if (executed && contentScrollRatio < scrollThreshold) {
+            executed = false;
+            removeFire();
+        }
+        // 水を温める
+    });
+}
+
+function scrollEvent_Content2_2(content, scrollThreshold) {
     let executed = false;
     window.addEventListener("scroll", () => {
         let contentScroll = -content.getBoundingClientRect().top;
@@ -316,7 +364,7 @@ function scrollEvent_Content2_1(content, scrollThreshold) {
     });
 }
 
-function scrollEvent_Content2_2(content, scrollThreshold) {
+function scrollEvent_Content2_3(content, scrollThreshold) {
     let executed = false;
     window.addEventListener("scroll", () => {
         let contentScroll = -content.getBoundingClientRect().top;
@@ -417,16 +465,16 @@ function scrollEvent_Content9_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                // addImage.querySelector(".hotwater").classList.add("opacityMinAnimetion");
-                // addImage.querySelector(".water").classList.add("opacityMinAnimetion");
-                // addImage.querySelector(".lid").classList.remove("opacityMin");
+                // addImage2.querySelector(".hotwater").classList.add("opacityMinAnimetion");
+                // addImage2.querySelector(".water").classList.add("opacityMinAnimetion");
+                // addImage2.querySelector(".lid").classList.remove("opacityMin");
                 removeHotWater();
                 removeWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
             addHotWater();
-            addImage.querySelector(".hotwater").classList.add("opacityMin");
+            addImage2.querySelector(".hotwater").classList.add("opacityMin");
             lidOpacityMin();
         }
     });
@@ -584,8 +632,9 @@ function scrollEvent_Content23_1(content, scrollThreshold) {
 scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .8);
 scrollEvent_Content1_2(content1, .9);
-scrollEvent_Content2_1(content2, .5);
-scrollEvent_Content2_2(content2, 1);
+scrollEvent_Content2_1(content2, .2);
+scrollEvent_Content2_2(content2, .5);
+scrollEvent_Content2_3(content2, 1);
 scrollEvent_Content3_1(content3, .1);
 scrollEvent_Content3_2(content3, .7);
 scrollEvent_Content5_1(content5, .7);

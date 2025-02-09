@@ -6,6 +6,52 @@
     width: 100vw;
     left: 0;
 }
+@keyframes tripodAdd {
+    0%{
+        transform: translateY(50vh);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.tripodAddAnimetion{
+    animation: tripodAdd 1s ease-in-out both;
+}
+@keyframes tripodRemove {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(50vh);
+        opacity: 0;
+    }
+}
+.tripodRemoveAnimetion{
+    animation: tripodRemove 1s ease-in-out both;
+}
+@keyframes fireAdd {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.fireAddAnimetion{
+    animation: fireAdd 1s ease-in-out both;
+}
+@keyframes fireRemove {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.fireRemoveAnimetion{
+    animation: fireRemove 1s ease-in-out both;
+}
 @keyframes OpacityHalf {
     0%{
         
