@@ -146,21 +146,24 @@ function removeTripod() {
     addImage1.querySelector(".tripod").classList.add("tripodRemoveAnimetion");
 }
 
-let fireIsAdd = false
+let fireIsAdd = false;
 
 function addFire() {
+    fireIsAdd = true;
     addImage1.querySelector(".fire").classList.remove("fireRemoveAnimetion");
     addImage1.querySelector(".fire").classList.add("fireAddAnimetion");
-    fireIsAdd = true;
 }
 
 function removeFire() {
+    fireIsAdd = false;
     addImage1.querySelector(".fire").classList.remove("fireAddAnimetion");
     addImage1.querySelector(".fire").classList.add("fireRemoveAnimetion");
-    fireIsAdd = false;
 }
 
+let bucketwaterIsAdd = false;
+
 function addBucketWater() {
+    bucketwaterIsAdd = true;
     addImage1.querySelector(".bucketwater").classList.add("bucketWaterAddAnimetion");
     addImage1.querySelector(".bucketwater").classList.remove("bucketWaterRemoveAnimetion");
     addImage2.querySelector(".bucketwater2").classList.add("bucketWater2AddAnimetion");
@@ -168,6 +171,7 @@ function addBucketWater() {
 }
 
 function removeBucketWater() {
+    bucketwaterIsAdd = false;
     addImage1.querySelector(".bucketwater").classList.add("bucketWaterRemoveAnimetion");
     addImage1.querySelector(".bucketwater").classList.remove("bucketWaterAddAnimetion");
     addImage2.querySelector(".bucketwater2").classList.add("bucketWater2RemoveAnimetion");
@@ -186,14 +190,14 @@ function removeWater() {
 hotWaterIsAdd = false;
 
 function addHotWater() {
-    addImage2.querySelector(".hotwater").classList.add("waterAddAnimetion");
     hotWaterIsAdd = true;
+    addImage2.querySelector(".hotwater").classList.add("waterAddAnimetion");
 }
 
 function removeHotWater() {
+    hotWaterIsAdd = false;
     addImage2.querySelector(".hotwater").classList.add("opacityMinAnimetion");
     addImage2.querySelector(".hotwater").classList.remove("waterAddAnimetion");
-    hotWaterIsAdd = false;
 }
 
 function addAir() {
@@ -239,13 +243,13 @@ function canOpacityDefault() {
 let grain_1IsAnimetion = false;
 
 function grain_1AnimetionStart() {
-    addImage2.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
     grain_1IsAnimetion = true;
+    addImage2.querySelector(".grain").classList.add("GrainAnimetions", "grain_1Animetion");
 }
 
 function grain_1AnimetionStop() {
-    addImage2.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
     grain_1IsAnimetion = false;
+    addImage2.querySelector(".grain").classList.remove("GrainAnimetions", "grain_1Animetion");
 }
 
 function h2oAnimetionStart() {
@@ -297,10 +301,11 @@ function arrowSpreadStop() {
 
 window.addEventListener("scroll", () => {
     if (window.scrollY == 0) {
-        if (hotWaterIsAdd && grain_1IsAnimetion && fireIsAdd) {
+        if (hotWaterIsAdd && grain_1IsAnimetion && fireIsAdd && bucketwaterIsAdd) {
             removeHotWater();
             grain_1AnimetionStop();
             removeFire();
+            removeBucketWater();
         }
     }
 });
