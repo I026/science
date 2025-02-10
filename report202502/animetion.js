@@ -772,7 +772,7 @@ myname.addEventListener("click",() =>{
 
 scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .5);
-scrollEvent_Content1_2(content1, .7);
+scrollEvent_Content1_2(content1, .9);
 scrollEvent_Content2_1(content2, .4);
 scrollEvent_Content2_2(content2, .7);
 scrollEvent_Content2_3(content2, 1);
