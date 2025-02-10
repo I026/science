@@ -332,7 +332,7 @@ function scrollEvent_Top(content, scrollThreshold) {
         // console.log(contentScrollRatio);
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true; // 再実行を防ぐ
-            canClashReverseLid(ClashInterval);
+            canClashReverseLid();
             topCanClashPlay = false;
         }
         // 缶を潰す
@@ -528,7 +528,6 @@ function scrollEvent_Content5_1(content, scrollThreshold) {
             setTimeout(() => {
                 canClashReverse(ClashInterval);
                 addHotAir();
-                lidOpen();
                 addHotWater();
                 removeBucketWater();
                 addTripod();
