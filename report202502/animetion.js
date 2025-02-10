@@ -421,13 +421,11 @@ function scrollEvent_Content2_3(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                grain_1AnimetionStart();
-                addBucketWater();
+                lidClose();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            grain_1AnimetionStop();
-            removeBucketWater();
+            lidOpen();
         }
         // 粒を揺らす
     });
@@ -443,11 +441,13 @@ function scrollEvent_Content3_1(content, scrollThreshold) {
         if (!executed && contentScrollRatio >= scrollThreshold) {
             executed = true;
             setTimeout(() => {
-                lidClose();
+                grain_1AnimetionStart();
+                addBucketWater();
             }, 100);
         } else if (executed && contentScrollRatio < scrollThreshold) {
             executed = false;
-            lidOpen();
+            grain_1AnimetionStop();
+            removeBucketWater();
         }
         // フタを閉める
     });
