@@ -136,12 +136,16 @@ function lidOpacityMax() {
     addImage2.querySelector(".lid").classList.remove("lidCloseAnimetion");
 }
 
+let tripodIsAdd = false;
+
 function addTripod() {
+    tripodIsAdd = true;
     addImage1.querySelector(".tripod").classList.add("tripodAddAnimetion");
     addImage1.querySelector(".tripod").classList.remove("tripodRemoveAnimetion");
 }
 
 function removeTripod() {
+    tripodIsAdd = false;
     addImage1.querySelector(".tripod").classList.remove("tripodAddAnimetion");
     addImage1.querySelector(".tripod").classList.add("tripodRemoveAnimetion");
 }
@@ -301,11 +305,20 @@ function arrowSpreadStop() {
 
 window.addEventListener("scroll", () => {
     if (window.scrollY == 0) {
-        if (hotWaterIsAdd && grain_1IsAnimetion && fireIsAdd && bucketwaterIsAdd) {
+        if (hotWaterIsAdd) {
             removeHotWater();
+        }
+        if (grain_1IsAnimetion) {
             grain_1AnimetionStop();
+        }
+        if (fireIsAdd) {
             removeFire();
+        }
+        if (bucketwaterIsAdd) {
             removeBucketWater();
+        }
+        if (tripodIsAdd) {
+            removeTripod();
         }
     }
 });
