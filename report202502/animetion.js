@@ -22,7 +22,10 @@ const mymail = document.getElementById("mymail");
 
 const ClashInterval = 50;
 
+let canIsClash = false;
+
 function canClash(interval) {
+    canIsClash = true
     canImage.src = "medias/Can.svg"
     setTimeout(() => {
         canImage.src = "medias/Can_Clash1.svg"
@@ -33,6 +36,7 @@ function canClash(interval) {
 }
 
 function canClashReverse(interval) {
+    canIsClash = false;
     canImage.src = "medias/Can_Clash2.svg"
     setTimeout(() => {
         canImage.src = "medias/Can_Clash1.svg"
@@ -43,6 +47,7 @@ function canClashReverse(interval) {
 }
 
 function canClashReverseLid(interval) {
+    canIsClash = false;
     canImage.src = "medias/Can_Clash2.svg"
     setTimeout(() => {
         canImage.src = "medias/Can_Clash1.svg"
@@ -63,8 +68,8 @@ function canClashReverseLid(interval) {
         addImage2.innerHTML += "<img class='h2o2' src='medias/H2O.svg'>";
         addImage2.innerHTML += "<img class='rightarrow' src='medias/Arrow.svg'>";
         addImage2.innerHTML += "<img class='leftarrow' src='medias/Arrow.svg'>";
-        addImage2.innerHTML += "<img class='outsideleftarrow' src='medias/Arrow.svg'>";
-        addImage2.innerHTML += "<img class='outsiderightarrow' src='medias/Arrow.svg'>";
+        addImage2.innerHTML += "<img class='outsideleftarrow' src='medias/HotArrow.svg'>";
+        addImage2.innerHTML += "<img class='outsiderightarrow' src='medias/HotArrow.svg'>";
     }, interval * 2);
 }
 
@@ -305,6 +310,9 @@ function arrowSpreadStop() {
 
 window.addEventListener("scroll", () => {
     if (window.scrollY == 0) {
+        if (canIsClash) {
+            canClashReverseLid();
+        }
         if (hotWaterIsAdd) {
             removeHotWater();
         }
