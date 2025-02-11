@@ -17,8 +17,6 @@ const content21 = document.getElementById("content21");
 const content22 = document.getElementById("content22");
 const content23 = document.getElementById("content23");
 const content24 = document.getElementById("content24");
-const myname = document.getElementById("myname");
-const mymail = document.getElementById("mymail");
 
 const ClashInterval = 50;
 
@@ -770,25 +768,6 @@ function scrollEvent_Content24_1(content, scrollThreshold) {
         }
     });
 }
-
-myname.addEventListener("click",() =>{
-    mymail.classList.add("waterAddAnimetion");
-    setTimeout(() => {
-        mymail.classList.remove("waterAddAnimetion");
-    }, 10000);
-    // mymail.classList.add("waterAddAnimetion");
-    // let mailIndex = -1
-    // let mailInterval = setInterval(() => {
-    //     mymail.innerHTML = mymail.innerText.slice(0,mailIndex) + `<span style="opacity: .5; color: black;">${mymail.innerText.slice(mailIndex)}</span>`;
-    //     mailIndex -= 1;
-    //     // console.log(mailIndex);
-    //     if (-mymail.innerText.length == mailIndex + 1) {
-    //         mymail.querySelector("span").style.opacity = 0;
-    //         clearInterval(mailInterval);
-    //         mymail.classList.remove("waterAddAnimetion");
-    //     }
-    // }, 1000);
-})
 
 scrollEvent_Top(topContent, 1.2);
 scrollEvent_Content1_1(content1, .5);

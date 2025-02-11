@@ -149,8 +149,8 @@
         <div class="margin"></div>
         <div id="content26">
             <p>
-                スチール缶が潰れる仕組み | <span id="myname">小暮千秋</span>
-                <span class="mymail" id="mymail">chiaki.kogretch@gmail.com</span><br>
+                <span id="myname"></span><br>
+                <span class="mymail" id="mymail"><img src="medias/mail.svg"></span><br>
                 このWebサイトは自身で制作し公開しています｡<br>
                 <br>
                 関連リンク<br>
@@ -166,5 +166,16 @@
         </div>
     </span>
     <script src="animetion.js"></script>
+    <script>
+        const myname = document.getElementById("myname");
+        const mymail = document.getElementById("mymail");
+        myname.innerText = document.querySelector("title").innerText;
+        myname.addEventListener("click",() =>{
+            mymail.classList.add("waterAddAnimetion");
+            setTimeout(() => {
+                mymail.classList.remove("waterAddAnimetion");
+            }, 10000);
+        });
+    </script>
 </body>
 </html>
