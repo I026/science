@@ -1,8 +1,19 @@
-.contents div p{
-    position: sticky;
-    top: 50px;
+.contents div div{
+    margin: 10px;
+    height: 100vh;
 }
-.contents div span{
+.contents div div p{
+    position: sticky;
+    top: calc(25px + 50px);
+
+}
+.contents div h1{
+    position: sticky;
+    top: calc(25px);
+    margin: 10px;
+    height: calc(1em + 20px + 35px);
+}
+.contents div div span{
     width: 100vw;
     left: 0;
 }
