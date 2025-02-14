@@ -76,6 +76,9 @@ topCanClashPlay = true;
 setTimeout(() => {
     if (window.scrollY <= 100 && topCanClashPlay) {
         canClash(ClashInterval);
+        setTimeout(() => {
+            canClash(0);
+        }, ClashInterval * 2);
     }
 }, 1000);
 

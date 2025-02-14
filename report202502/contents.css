@@ -5,7 +5,10 @@
 .contents div div p{
     position: sticky;
     top: calc(25px + 50px);
-    text-shadow: 0 0 4px rgb(250, 250, 250), 0 0 4px rgb(250, 250, 250), 0 0 4px rgb(250, 250, 250);
+    text-shadow: 
+    0 0 4px rgb(250, 250, 250),
+    0 0 4px rgb(250, 250, 250),
+    0 0 4px rgb(250, 250, 250);
 
 }
 .contents div h1{
