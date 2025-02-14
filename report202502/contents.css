@@ -9,9 +9,9 @@
 }
 .contents div h1{
     position: sticky;
-    top: calc(25px);
+    top: 25px;
     margin: 10px;
-    height: calc(1em + 20px + 35px);
+    height: calc(1em + 20px + 50px);
 }
 .contents div div span{
     width: 100vw;
