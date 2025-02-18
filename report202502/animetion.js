@@ -27,7 +27,8 @@ function canClash(interval) {
     canImage.src = "medias/Can_Open.svg";
     setTimeout(() => {
         canImage.src = "medias/Can_Clash1.svg";
-        addImage2.querySelector("img").style.opacity = 0;
+        addImage2.querySelector("img").style.display = "none";
+        // addImage2.querySelector("img").innerHTML = "";
     }, interval * 1);
     setTimeout(() => {
         canImage.src = "medias/Can_Clash2.svg";
@@ -52,12 +53,13 @@ function canClashReverseLid(interval) {
         canImage.src = "medias/Can_Clash1.svg";
     }, interval * 1);
     setTimeout(() => {
+        addImage2.querySelector("img").style.display = "none";
         addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
         addImage1.innerHTML += "<img class='fire' src='medias/Fire.svg'>";
         addImage1.innerHTML += "<img class='bucketwater' src='medias/BucketWater.svg'>";
         addImage2.innerHTML += "<img class='bucketwater2' src='medias/BucketWater2.svg'>";
         addImage2.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
-        canImage.src = "medias/Can_Open.svg"
+        canImage.src = "medias/Can_Open.svg";
         addImage2.innerHTML += "<img class='water' src='medias/Water.svg'>";
         addImage2.innerHTML += "<img class='hotwater' src='medias/HotWater.svg'>";
         addImage2.innerHTML += "<img class='grain' src='medias/Grain.svg'>";
