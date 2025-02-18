@@ -28,12 +28,14 @@ window.addEventListener("load", function() {
         canImage.src = "medias/Can_Open.svg";
         setTimeout(() => {
             canImage.src = "medias/Can_Clash1.svg";
-            addImage2.querySelector("img").style.display = "none";
             // addImage2.querySelector("img").innerHTML = "";
         }, interval * 1);
         setTimeout(() => {
             canImage.src = "medias/Can_Clash2.svg";
         }, interval * 2);
+        setTimeout(() => {
+            addImage2.querySelector("img").style.display = "none";
+        }, interval * 2.25);
     }
 
     function canClashReverse(interval) {
