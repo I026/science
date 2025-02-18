@@ -24,45 +24,40 @@ window.addEventListener("load", function() {
     let canIsClash = false;
 
     function canClash(interval) {
-        canIsClash = true;
-        canImage.src = "medias/Can_Open.svg";
+        canIsClash = true
+        canImage.src = "medias/Can.svg"
         setTimeout(() => {
-            canImage.src = "medias/Can_Clash1.svg";
-            // addImage2.querySelector("img").innerHTML = "";
+            canImage.src = "medias/Can_Clash1.svg"
         }, interval * 1);
         setTimeout(() => {
-            canImage.src = "medias/Can_Clash2.svg";
+            canImage.src = "medias/Can_Clash2.svg"
         }, interval * 2);
-        setTimeout(() => {
-            addImage2.querySelector("img").style.display = "none";
-        }, interval * 2.25);
     }
 
     function canClashReverse(interval) {
         canIsClash = false;
-        canImage.src = "medias/Can_Clash2.svg";
+        canImage.src = "medias/Can_Clash2.svg"
         setTimeout(() => {
-            canImage.src = "medias/Can_Clash1.svg";
+            canImage.src = "medias/Can_Clash1.svg"
         }, interval * 1);
         setTimeout(() => {
-            canImage.src = "medias/Can_Open.svg";
+            canImage.src = "medias/Can_Open.svg"
         }, interval * 2);
     }
 
     function canClashReverseLid(interval) {
         canIsClash = false;
-        canImage.src = "medias/Can_Clash2.svg";
+        canImage.src = "medias/Can_Clash2.svg"
         setTimeout(() => {
-            canImage.src = "medias/Can_Clash1.svg";
+            canImage.src = "medias/Can_Clash1.svg"
         }, interval * 1);
         setTimeout(() => {
-            addImage2.querySelector("img").style.display = "none";
             addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
             addImage1.innerHTML += "<img class='fire' src='medias/Fire.svg'>";
             addImage1.innerHTML += "<img class='bucketwater' src='medias/BucketWater.svg'>";
             addImage2.innerHTML += "<img class='bucketwater2' src='medias/BucketWater2.svg'>";
             addImage2.innerHTML += "<img class='lid' src='medias/Can_Lid.svg'>";
-            canImage.src = "medias/Can_Open.svg";
+            canImage.src = "medias/Can_Open.svg"
             addImage2.innerHTML += "<img class='water' src='medias/Water.svg'>";
             addImage2.innerHTML += "<img class='hotwater' src='medias/HotWater.svg'>";
             addImage2.innerHTML += "<img class='grain' src='medias/Grain.svg'>";
@@ -86,7 +81,7 @@ window.addEventListener("load", function() {
                 canClash(0);
             }, ClashInterval * 2);
         }
-    }, 1500);
+    }, 1000);
 
     function opacityAnimetion(object,opacity) {
         if (opacity == 1) {
