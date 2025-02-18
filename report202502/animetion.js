@@ -23,32 +23,33 @@ const ClashInterval = 50;
 let canIsClash = false;
 
 function canClash(interval) {
-    canIsClash = true
-    canImage.src = "medias/Can.svg"
+    canIsClash = true;
+    canImage.src = "medias/Can_Open.svg";
     setTimeout(() => {
-        canImage.src = "medias/Can_Clash1.svg"
+        canImage.src = "medias/Can_Clash1.svg";
+        addImage2.querySelector("img").style.opacity = 0;
     }, interval * 1);
     setTimeout(() => {
-        canImage.src = "medias/Can_Clash2.svg"
+        canImage.src = "medias/Can_Clash2.svg";
     }, interval * 2);
 }
 
 function canClashReverse(interval) {
     canIsClash = false;
-    canImage.src = "medias/Can_Clash2.svg"
+    canImage.src = "medias/Can_Clash2.svg";
     setTimeout(() => {
-        canImage.src = "medias/Can_Clash1.svg"
+        canImage.src = "medias/Can_Clash1.svg";
     }, interval * 1);
     setTimeout(() => {
-        canImage.src = "medias/Can_Open.svg"
+        canImage.src = "medias/Can_Open.svg";
     }, interval * 2);
 }
 
 function canClashReverseLid(interval) {
     canIsClash = false;
-    canImage.src = "medias/Can_Clash2.svg"
+    canImage.src = "medias/Can_Clash2.svg";
     setTimeout(() => {
-        canImage.src = "medias/Can_Clash1.svg"
+        canImage.src = "medias/Can_Clash1.svg";
     }, interval * 1);
     setTimeout(() => {
         addImage1.innerHTML += "<img class='tripod' src='medias/Tripod.svg'>";
